@@ -3,6 +3,8 @@ A demo project for  a JAX-RS REST service showcasing Avro REST SQL, spf4j profil
 
 This is right now work in progress, need to be brave to try it out :-)
 
+N.B. -- repointing depends to Maven Central (removing snapshots / pkg.github references)
+
 A recent version you can test on GKE [at](https://demo.spf4j.org/apiBrowser)
 
 Some time ago I stumbled upon the statement: "We replaced our monolith with micro services so that every outage could be more like a murder mystery"
