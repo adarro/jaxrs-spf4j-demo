@@ -1,6 +1,25 @@
 
 package org.spf4j.demo;
 
+import org.apache.avro.reflect.AvroAlias;
+import org.apache.avro.reflect.AvroMeta;
+import org.apache.avro.reflect.AvroSchema;
+import org.apache.avro.reflect.ReflectData;
+import org.glassfish.jersey.client.proxy.WebResourceFactory;
+import org.junit.Assert;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.spf4j.demo.avro.DemoRecord;
+import org.spf4j.demo.avro.DemoRecordInfo;
+import org.spf4j.demo.avro.MetaData;
+import org.spf4j.io.Streams;
+
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.GenericEntity;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,27 +28,6 @@ import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.GenericEntity;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import org.apache.avro.AvroNamesRefResolver;
-import org.apache.avro.Schema;
-import org.apache.avro.SchemaResolver;
-import org.junit.Assert;
-import org.apache.avro.reflect.AvroMeta;
-import org.apache.avro.reflect.AvroSchema;
-import org.glassfish.jersey.client.proxy.WebResourceFactory;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.spf4j.demo.avro.DemoRecord;
-import org.spf4j.demo.avro.DemoRecordInfo;
-import org.spf4j.demo.avro.MetaData;
-import org.apache.avro.reflect.LogicalType;
-import org.apache.avro.reflect.ReflectData;
-import org.spf4j.io.Streams;
 
 /**
  *
@@ -136,7 +134,7 @@ public class ExampleResourceTest extends ServiceIntegrationBase {
 
     @AvroMeta(key = "path", value = "$.metaData.lastAccessed")
     @AvroSchema("string")
-    @LogicalType("instant")
+    @AvroAlias(alias = "instant")
     private Instant lastAccessed;
 
     public String getId() {

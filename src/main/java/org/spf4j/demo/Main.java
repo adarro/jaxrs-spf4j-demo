@@ -101,7 +101,7 @@ public class Main {
     LogbackService.redirecJDKLogging2Slf4j();
     scheduleSepuku();
     org.spf4j.base.Runtime.getMainClass(); //cache the main class.
-    Schema.MAPPER.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+//    Schema.MAPPER.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
     int appPort = Env.getValue("APP_SERVICE_PORT", 8080);
     int actuatorPort = Env.getValue("APP_ACTUATOR_PORT", 9090);
     String hostName = Env.getValue("KUBE_POD_NAME", "127.0.0.1");
